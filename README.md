@@ -26,7 +26,7 @@ Resources:
 Overview: [Quick R](http://www.statmethods.net/) 
 Interactive in R studio
 Or try swirl, an R package designed to teach you R straight from the command line. Swirl provides exercises and feedback from within your R session to help you learn in a structured, interactive way. 
-[Swirl](https://www.rstudio.com/online-learning/) 
+[Swirl](https://swirlstats.com/students.html) 
 
 Kindle 
 Import the pdf and read this intro to R on Kindle:
