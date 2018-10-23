@@ -1,2 +1,241 @@
 # intR0
 Introduction to R in R Studio for datajournalists
+---
+title: "stats for journalists"
+author: "pv"
+date: "18 september 2016"
+output: html_document
+---
+##Data Municipalities##  
+We are going to use a dataset downloaded from the Dutch Central bureau for Statistics, in combination with data from VNG(Dutch municipalities). The number of records is 420, which is the number of municipalities. For each we the following variables: name of the mayor, gender and political party, average income, WOZ (tax value of house), number of unemployed persons, number of cars. We start with downloading the data set(.dbf or xls) into R.
+  
+Before we start with the data, check your **workdirectory**: getwd() Or set your working directory with setwd().
+For loading xls data we use the library gdata.
+
+```{R}
+setwd("/home/peter/Documents/Documenten_win10/R/r_exercise/R")
+
+gemeente <- read.csv("gemeentedata.csv") 
+```
+Inspection of the data
+```{R}
+#see whether the data are loaded
+ls()
+#What are the dimensions of the data 12 variables over 415 rows(number of municipalities)
+dim(gemeente)
+#Structure of the data
+str(gemeente)
+# the first 10 rows or records
+head(gemeente,10)
+```
+
+Basic stats for the data:
+```{R}
+summary(gemeente)
+```
+Let's first inspect **measures** for metric data  
+```{R}
+mean(gemeente$GEM_INKOME)
+
+max(gemeente$GEM_INKOME)
+
+min(gemeente$GEM_INKOME)
+
+sd(gemeente$GEM_INKOME)
+
+quantile(gemeente$GEM_INKOME)
+```
+
+
+Now a **graph for the income distribution**, the histogram:  
+```{R}
+hist(gemeente$GEM_INKOME)
+#Let's give it a different colour class with 20 and a line for mean
+hist(gemeente$GEM_INKOME, 20, col="red")
+abline(v=mean(gemeente$GEM_INKOME, col="blue"))
+# And some other variations, as continuous variable:
+x<-density(gemeente$GEM_INKOME)
+plot(x)
+abline(v=mean(gemeente$GEM_INKOME, col="blue"))
+# And now as a box plot:
+boxplot(gemeente$GEM_INKOME)
+abline(h=mean(gemeente$GEM_INKOME, col="red"))
+
+```
+
+## Non-Metric variables on Nominal level let's look at gender and political party.
+```{R}
+gender<-gemeente$GESLACHT
+partij<-gemeente$PARTIJ
+table(gender)
+
+table(partij)
+
+#But these are absolute number, can we turn them in proportions or percentages:
+tg<-table(gender)
+prop.table(tg)
+
+tp<-table(partij)
+prop.table(tp)
+
+#And a graphic for political party
+ plot(partij)
+```
+Making a top-10 Lets make a list of the ten municipalities with the highest unemployment. First we make a new data frame with two variable de name of the municipality(GEMEENTE) and the number of unemployed(WW_PER_100). we make index for this variable and then make a list with decrease. We only want to show the top ten.
+```{R}
+gem2<-data.frame(gemeente$GEMEENTE, gemeente$WW_PER_100)
+ww <- gemeente$WW_PER_100
+index <- with(gem2, order(ww))
+gem3<-with(gem2, gem2[order(ww, decreasing=TRUE),])
+# cities highest unemployment
+head(gem3, 10)
+
+# cities with the lowest unemployment
+gem3<-with(gem2, gem2[order(ww, decreasing=FALSE),])
+head(gem3, 10)
+```
+# Bivariate analysis for nominal level
+Let's look at two variables and their relationship. The easiets way is to make a table of two variable. We try gender and party.
+```{R}
+tgp<-table(partij,gender)
+tgp
+
+# now as proportions of the row
+prop.table(tgp,1)
+
+# and here is the plot
+plot(tgp)
+ 
+# and the row sums
+rowSums(tgp)
+
+# and the column sums
+colSums(tgp)
+
+#This is enough to calculate the relationship between gender and political party. We calculate chi-square: 
+chisq.test(tgp)
+
+#H0: no relationship between gender and party H1: gender and party are releted The P-Value is 0.101905. The result is not significant at p < 0.05. Chi one side at 5% is 14.1 and 2.5% 16, which higher than Chi observed. Therefore H0 is not rejected.
+
+```
+# Bivariate analysis for ration and interval level
+We take a closer look at the relationship between **income and woz (house price)**.
+```{R}
+income<-gemeente$GEM_INKOME
+woz<-gemeente$GEM_WOZ
+# what is the correlation between the two
+cor(income,woz)
+## [1] 0.666597
+# next the graphs; two different plots
+plot(income,woz)
+abline (v=mean(income), col="yellow")
+abline(h=mean(woz), col="red")
+# and finally the linear model(regression)
+fit <-lm(woz~income)
+abline(fit, col="green")
+```
+
+Let's see how this **linear mode and the regression changes for political party**
+```{R}
+require("lattice")
+
+
+xyplot(woz~income|partij)
+ 
+xyplot(woz~income|factor(partij), type=c("p","r"))
+#Finally we make a nicer graph with ggplot.
+require("ggplot2")
+## Loading required package: ggplot2
+ggplot(gemeente, aes(x=income, y=woz))+
+geom_point() + stat_smooth()
+```
+Creating **subsets by recalculating variables**. We are going to convert ratio/interval level variables into ordinal/nominal variables. Income converted into rich and poor; and population of munipalities in small and large. Next we inspect the relationship with political party.
+```{}
+#For small and large
+groot<-gemeente[gemeente$BEVOLKING > mean(gemeente$BEVOLKING), c('PARTIJ')]
+table(groot)
+
+klein<-gemeente[gemeente$BEVOLKING < mean(gemeente$BEVOLKING), c('PARTIJ')]
+table(klein)
+
+#For rich and poor
+rijk<-gemeente[gemeente$GEM_INKOME > mean(gemeente$GEM_INKOME), c('PARTIJ')]
+arm<-gemeente[gemeente$GEM_INKOME < mean(gemeente$GEM_INKOME), c('PARTIJ')]
+table(rijk)
+
+table(arm)
+```
+
+Now that we now how to recalculate variables; we going to make subsets and look at the relationship in the subset-that is **calculating partial correlations**.
+```{R}
+klein<-gemeente[gemeente$BEVOLKING < mean(gemeente$BEVOLKING), c('PARTIJ','GEM_INKOMEN', 'GEM_WOZ','AUTOBEZIT','WW_PER_100')]
+cor(klein$GEM_INKOME,klein$GEM_WOZ)
+
+groot<-gemeente[gemeente$BEVOLKING > mean(gemeente$BEVOLKING), c('PARTIJ','GEM_INKOMEN', 'GEM_WOZ','AUTOBEZIT','WW_PER_100')]
+cor(groot$GEM_INKOME,groot$GEM_WOZ)
+
+mean(groot$AUTOBEZIT)
+
+mean(klein$AUTOBEZIT)
+
+#Let's see how the relationship look like for one political party.
+cda <-gemeente$GEM_INKOME[gemeente$PARTIJ=="CDA"]
+summary(cda)
+
+vvd <-gemeente$GEM_INKOME[gemeente$PARTIJ=="VVD"]
+summary(vvd)
+
+#And some more:
+cda2<-groot$GEM_INKOMEN[groot$PARTIJ=="CDA"]
+summary(cda2)
+
+cda3<-klein$GEM_INKOMEN[klein$PARTIJ=="CDA"]
+summary(cda3)
+
+cda4<-gemeente[gemeente$PARTIJ == "CDA", c('PARTIJ','GEM_INKOMEN', 'GEM_WOZ','AUTOBEZIT','WW_PER_100', 'BEVOLKING')]
+summary(cda4$BEVOLKING)
+```
+Now some **testing chi_sqr** again
+we start with redefining and converting variables: inc for income with dimension rich and poor("r" and "a"); and urban for population:small and large municipalities ("k" and "g").
+```{R}
+urban<-ifelse(gemeente$BEVOLKING > mean(gemeente$BEVOLKING) ,"g","k")
+table(urban)
+
+inc<-ifelse(gemeente$GEM_INKOME > mean(gemeente$GEM_INKOME) ,"r","a")
+table(inc)
+
+table(urban,inc)
+plot(table(urban,inc))
+
+# now the chi testing
+ chisq.test(table(inc,urban))
+
+# and the correlation:
+cor(gemeente$BEVOLKING,gemeente$GEM_INKOME)
+
+#Have a look at the following for P_values and significance 
+```
+Last chapter some graphs for the above variables
+unempoyment for two political parties  
+```{R}
+vvd2<-gemeente[gemeente$PARTIJ == "VVD", c('PARTIJ','GEM_INKOMEN', 'GEM_WOZ','AUTOBEZIT','WW_PER_100', 'BEVOLKING')]
+pvda2<-gemeente[gemeente$PARTIJ == "PvdA", c('PARTIJ','GEM_INKOMEN', 'GEM_WOZ','AUTOBEZIT','WW_PER_100', 'BEVOLKING')]
+#overlapping graphs
+wwp<-pvda2$WW_PER_100
+wwv<-vvd2$WW_PER_100
+hist(wwp, col="red")
+hist(wwv,  col=rgb(0, 1, 0, 0.5), add=T)
+ 
+#two in one screen
+par(mfrow=c(1,2))
+hist(wwp, col="red")
+hist(wwv, col="blue")
+ 
+``` 
+here are some **pirate plots**
+```{R}
+library(yarrr)
+pirateplot(formula=GEM_INKOMEN ~ PARTIJ, data=gemeente)
+pirateplot(formula=GEM_WOZ~PARTIJ, data=gemeente)
+```
+
