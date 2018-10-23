@@ -58,15 +58,15 @@ rforjournalists3.html
 5.Geocoding in R:
 Rforjournalists4.html 
 
-6.Scraping in R
+6.Scraping in R:
 rforjournalists5.html 
 
-7.Twitter and word cloud
+7.Twitter and word cloud:
 rforjournalists6.html 
 
 9.[Using Google Charts in R](https://cran.r-project.org/web/packages/googleVis/vignettes/googleVis_examples.html) 
 
-World Bank data internet access and GDP per cap as an example
+World Bank data internet access and GDP per cap as an example:
 gi.html 
 
 10.[Working with google analytics](http://d3-media.blogspot.nl/2015/02/google-analytics-in-r.html) 
