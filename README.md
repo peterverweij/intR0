@@ -41,11 +41,10 @@ Stay informed
 
 Below you find various ways to apply R for data journalism jobs.
 
-1.[Basic Text Mining in R](https://rstudio-pubs-static.s3.amazonaws.com/31867_8236987cf0a8444e962ccd2aec46d9c3.html#clustering-by-term-similarity)
-
+1.Basic Text Mining in R:
 Word cloud and text analysis using DNR: dnr_cloud.html 
 
-2.Basic statistics and analysis
+2.Basic statistics and analysis:
 Use R -examples data municipalities: 
 stats_for_journalists.html 
 
@@ -66,7 +65,7 @@ rforjournalists6.html
 
 9.[Using Google Charts in R](https://cran.r-project.org/web/packages/googleVis/vignettes/googleVis_examples.html) 
 
-World Bank data internet access and GDP per cap as an example:
+WorldBank data internet access and GDP per cap as an example:
 gi.html 
 
 10.[Working with google analytics](http://d3-media.blogspot.nl/2015/02/google-analytics-in-r.html) 
