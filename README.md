@@ -37,43 +37,39 @@ Stay informed
 
 
 
-Demos and Assignments
+**Demos and Assignments**
 
 Below you find various ways to apply R for data journalism jobs.
 
-1. Basic Text Mining in R
-https://rstudio-pubs-static.s3.amazonaws.com/31867_8236987cf0a8444e962ccd2aec46d9c3.html#clustering-by-term-similarity 
-Word cloud and text analysis using DNR
-file:///C:/Users/hp/Desktop/R/DNR_cloud/dnr_r/dnr_cloud.html 
-2. Basic statistics and analysis
+1.[Basic Text Mining in R](https://rstudio-pubs-static.s3.amazonaws.com/31867_8236987cf0a8444e962ccd2aec46d9c3.html#clustering-by-term-similarity) 
+Word cloud and text analysis using DNR: dnr_cloud.html 
+2.Basic statistics and analysis
 Use R -examples data municipalities: 
-file:///C:/Users/hp/Desktop/R/stats_for_journalists.html 
+stats_for_journalists.html 
 
-3. Making Maps in R:
-file:///C:/Users/hp/Desktop/R/R_for_journalists_handout/Rforjournalists2_map.html 
+3.Making Maps in R:
+Rforjournalists2_map.html 
 
-4. Polygon maps in R:
-file:///C:/Users/hp/Desktop/R/R_for_journalists_handout/rforjournalists3.html 
+4.Polygon maps in R:
+rforjournalists3.html 
 
-5. Geocoding in R:
-file:///C:/Users/hp/Desktop/R/R_for_journalists_handout/Rforjournalists4.html 
+5.Geocoding in R:
+Rforjournalists4.html 
 
-6. Scraping in R
-file:///C:/Users/hp/Desktop/R/R_for_journalists_handout/Rforjournalists5.html 
-7. Twitter and word cloud
-file:///C:/Users/hp/Desktop/R/R_for_journalists_handout/rforjournalists6.html 
+6.Scraping in R
+rforjournalists5.html 
 
-9. Using Google Charts in R:
-https://cran.r-project.org/web/packages/googleVis/vignettes/googleVis_examples.html 
+7.Twitter and word cloud
+rforjournalists6.html 
+
+9.[Using Google Charts in R](https://cran.r-project.org/web/packages/googleVis/vignettes/googleVis_examples.html) 
 
 World Bank data internet access and GDP per cap as an example
 file:///C:/Users/hp/Desktop/R/inet_gdp/gi.html 
 
-10. Working with google analytics
-http://d3-media.blogspot.nl/2015/02/google-analytics-in-r.html 
+10.[Working with google analytics](http://d3-media.blogspot.nl/2015/02/google-analytics-in-r.html) 
 
-11. Twitter followers in R
-http://d3-media.blogspot.nl/2015/03/mapping-twitter-followers-in-r.html 
+11.[Twitter followers in R](http://d3-media.blogspot.nl/2015/03/mapping-twitter-followers-in-r.html) 
 
 
 
