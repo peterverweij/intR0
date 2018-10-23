@@ -3,8 +3,7 @@
 **Learning R for data journalism**
 
 **Why?**
-[5 reason for using R]
-(http://memeburn.com/2014/05/5-compelling-arguments-for-using-r-in-data-journalism/) 
+[5 reason for using R](http://memeburn.com/2014/05/5-compelling-arguments-for-using-r-in-data-journalism/) 
 
 
 **Start here**
@@ -12,28 +11,29 @@ Here is a start to learn the basics
 
 Computerworld
 
-Work through The Beginner’s Guide to R by Computerworld Magazine. This 30-page guide will show you how to install R, load data, run analyses, make graphs, and more. 
+Work through [The Beginner’s Guide to R by Computerworld Magazine](https://www.computerworld.com/article/2497143/business-intelligence/business-intelligence-beginner-s-guide-to-r-introduction.html)
+This 30-page guide will show you how to install R, load data, run analyses, make graphs, and more. 
 If you're just starting with R, don't miss the Computerworld Beginner's Guide to R:
-Part 1: Introduction - get started with this popular programming language. 
-Part 2: Getting your data into R - tips on how to import data in various formats, both local and on the Web. 
-Part 3: Easy ways to do basic data analysis - extract some simple stats. 
-Part 4: Painless data visualization - simple graphics, bar graphs and a few more complex charts. 
-Part 5: Syntax quirks you'll want to know - some R idiosyncrasies. 
-Complete guide as PDF download 
+1. Introduction - get started with this popular programming language. 
+2. Getting your data into R - tips on how to import data in various formats, both local and on the Web
+3. Easy ways to do basic data analysis - extract some simple stats. 
+4. Painless data visualization - simple graphics, bar graphs and a few more complex charts. 
+5. Syntax quirks you'll want to know - some R idiosyncrasies. 
+[Complete guide](https://www.computerworld.com/article/2884322/application-development/learn-r-programming-basics-with-our-pdf.html#tk.ctw-eos) as PDF download 
 Resources:
-60+ R resources to improve your data skills
+[60+ R resources to improve your data skills](https://www.computerworld.com/article/2497464/business-intelligence/top-r-language-resources-to-improve-your-data-skills.html)
 
-Overview: Quick R: http://www.statmethods.net/ 
+Overview: [Quick R](http://www.statmethods.net/) 
 Interactive in R studio
 Or try swirl, an R package designed to teach you R straight from the command line. Swirl provides exercises and feedback from within your R session to help you learn in a structured, interactive way. 
-Swirl, more https://www.rstudio.com/online-learning/ 
+[Swirl](https://www.rstudio.com/online-learning/) 
 
 Kindle 
 Import the pdf and read this intro to R on Kindle:
-https://www.r-bloggers.com/yarrr-the-pirates-guide-to-r-2/ 
+[pirates-guide](https://www.r-bloggers.com/yarrr-the-pirates-guide-to-r-2/) 
 
-Informed
-Follow: https://www.r-bloggers.com/ 
+Stay informed
+[Follow R Bloggers](https://www.r-bloggers.com) 
 
 
 
