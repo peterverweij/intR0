@@ -67,7 +67,7 @@ rforjournalists6.html
 9.[Using Google Charts in R](https://cran.r-project.org/web/packages/googleVis/vignettes/googleVis_examples.html) 
 
 World Bank data internet access and GDP per cap as an example
-file:///C:/Users/hp/Desktop/R/inet_gdp/gi.html 
+gi.html 
 
 10.[Working with google analytics](http://d3-media.blogspot.nl/2015/02/google-analytics-in-r.html) 
 
