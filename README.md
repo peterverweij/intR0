@@ -41,6 +41,8 @@ Stay informed
 
 Below you find various ways to apply R for data journalism jobs.
 
+0. Datajournalism_pres.html is a presentation instroducing statistical analysis
+
 1.Basic Text Mining in R:
 Word cloud and text analysis using DNR: dnr_cloud.html 
 
