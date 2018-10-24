@@ -47,6 +47,8 @@ Word cloud and text analysis using DNR: dnr_cloud.html
 2.Basic statistics and analysis:
 Use R -examples data municipalities: 
 stats_for_journalists.html 
+You can run the data yourself either as markdown(Rmd) in Rstudio
+or in jupyter as a notebook (ipynb)
 
 3.Making Maps in R:
 Rforjournalists2_map.html 
